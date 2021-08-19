@@ -1,8 +1,12 @@
 package Main;
 
+import java.util.Scanner;
+
 public class main {
 
     public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+
         Cliente Andre = new Cliente();
         Cliente Maria = new Cliente();
         Andre.setNome("Andre Santos");
@@ -16,9 +20,18 @@ public class main {
         ccAndre.transferir(75, cpMaria);
 
         // Imprime extrato das contas
-        ccAndre.imprimir_extrato();
+        System.out.print("Digite o nome do cliente para extrato: ");
+        String clienteExtrato = scan.nextLine();
         System.out.println("");
-        cpMaria.imprimir_extrato();
+
+        switch (clienteExtrato.toLowerCase()) {
+            case "andre":
+                ccAndre.imprimir_extrato();
+                break;
+            case "maria":
+                cpMaria.imprimir_extrato();
+                break;
+        }
     }
 
 }
